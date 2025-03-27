@@ -1,23 +1,23 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Progress } from "@/components/ui/progress";
 
 interface Skill {
   name: string;
   level: number;
-  color: string;
 }
 
 const About: React.FC = () => {
   const skills: Skill[] = [
-    { name: "AWS", level: 90, color: "bg-yellow-500" },
-    { name: "Azure", level: 85, color: "bg-blue-500" },
-    { name: "Google Cloud", level: 80, color: "bg-green-500" },
-    { name: "Kubernetes", level: 85, color: "bg-blue-600" },
-    { name: "Terraform", level: 75, color: "bg-purple-500" },
-    { name: "Docker", level: 90, color: "bg-blue-400" },
-    { name: "CI/CD", level: 80, color: "bg-red-500" },
-    { name: "Python", level: 85, color: "bg-yellow-600" },
+    { name: "AWS", level: 90 },
+    { name: "Azure", level: 85 },
+    { name: "Google Cloud", level: 80 },
+    { name: "Kubernetes", level: 85 },
+    { name: "Terraform", level: 75 },
+    { name: "Docker", level: 90 },
+    { name: "CI/CD", level: 80 },
+    { name: "Python", level: 85 },
   ];
 
   return (
@@ -51,19 +51,10 @@ const About: React.FC = () => {
           
           <div className="space-y-6">
             <h3 className="text-xl font-semibold text-gray-800">Technical Skills</h3>
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {skills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium text-gray-700">{skill.name}</span>
-                    <span className="text-sm text-gray-500">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
+                <div key={index} className="p-3 bg-white rounded-md shadow-sm hover:shadow-md transition-shadow">
+                  <span className="font-medium text-gray-700">{skill.name}</span>
                 </div>
               ))}
             </div>
