@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-gradient">Abishek Gautam</h1>
+              <h1 className="text-2xl font-bold text-gradient"></h1>
             </a>
           </div>
 
