@@ -54,21 +54,19 @@ const Hero: React.FC = () => {
           
           <div className={`relative transition-all duration-1000 delay-300 ${loaded ? "opacity-100" : "opacity-0 translate-y-10"}`}>
             <div className="relative w-full aspect-square max-w-md mx-auto">
-              {/* Hero image with glass effect */}
+              {/* AWS logo with glass effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-cloud-100 to-cloud-50 rounded-full"></div>
-              <div className="absolute inset-4 glass rounded-full overflow-hidden">
-                <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80')] bg-cover bg-center"></div>
+              <div className="absolute inset-4 glass rounded-full overflow-hidden flex items-center justify-center">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" 
+                  alt="AWS Logo" 
+                  className="w-3/4 h-3/4 object-contain"
+                />
               </div>
               
-              {/* Floating certification badges */}
+              {/* Only AWS Certification badge */}
               <div className="absolute -right-4 top-1/4 glass p-3 rounded-lg shadow-lg animate-float">
                 <div className="text-sm font-medium">AWS Certified</div>
-              </div>
-              <div className="absolute -left-4 bottom-1/4 glass p-3 rounded-lg shadow-lg animate-float" style={{ animationDelay: "1s" }}>
-                <div className="text-sm font-medium">Google Cloud</div>
-              </div>
-              <div className="absolute right-1/4 -bottom-4 glass p-3 rounded-lg shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
-                <div className="text-sm font-medium">Azure Expert</div>
               </div>
             </div>
           </div>
