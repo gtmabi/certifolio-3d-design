@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from "react";
-import ThreeScene from "./3d/ThreeScene";
 import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -73,7 +72,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
                             ? "text-cloud-500 bg-cloud-50"
                             : "text-gray-700 hover:text-cloud-500 hover:bg-cloud-50"
                         }`}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           onNavigate(item.id);
                           setMobileMenuOpen(false);
                         }}
@@ -86,9 +86,25 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
               )}
             </>
           ) : (
-            <div className="hidden md:block">
-              <ThreeScene activeSection={activeSection} onNavigate={onNavigate} />
-            </div>
+            <nav className="hidden md:flex space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`text-base font-medium transition-colors duration-200 ${
+                    activeSection === item.id
+                      ? "text-cloud-600"
+                      : "text-gray-700 hover:text-cloud-500"
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(item.id);
+                  }}
+                >
+                  {item.text}
+                </a>
+              ))}
+            </nav>
           )}
 
           <div className="hidden md:flex items-center">
