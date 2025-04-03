@@ -35,6 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
     { text: "Projects", id: "projects" },
     { text: "Certifications", id: "certifications" },
     { text: "Contact", id: "contact" },
+    { text: "Blog", id: "blog", external: true, url: "https://blog.abishekgautam.com.np" },
   ];
 
   return (
@@ -66,17 +67,21 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
                     {navItems.map((item) => (
                       <a
                         key={item.id}
-                        href={`#${item.id}`}
+                        href={item.external ? item.url : `#${item.id}`}
                         className={`block px-3 py-2 rounded-md text-base font-medium ${
                           activeSection === item.id
                             ? "text-cloud-500 bg-cloud-50"
                             : "text-gray-700 hover:text-cloud-500 hover:bg-cloud-50"
                         }`}
                         onClick={(e) => {
-                          e.preventDefault();
-                          onNavigate(item.id);
-                          setMobileMenuOpen(false);
+                          if (!item.external) {
+                            e.preventDefault();
+                            onNavigate(item.id);
+                            setMobileMenuOpen(false);
+                          }
                         }}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
                       >
                         {item.text}
                       </a>
@@ -90,16 +95,20 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
               {navItems.map((item) => (
                 <a
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={item.external ? item.url : `#${item.id}`}
                   className={`text-base font-medium transition-colors duration-200 ${
                     activeSection === item.id
                       ? "text-cloud-600"
                       : "text-gray-700 hover:text-cloud-500"
                   }`}
                   onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate(item.id);
+                    if (!item.external) {
+                      e.preventDefault();
+                      onNavigate(item.id);
+                    }
                   }}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
                 >
                   {item.text}
                 </a>
